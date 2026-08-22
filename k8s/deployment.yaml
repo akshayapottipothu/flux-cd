@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxcd-website
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fluxcd-website
+  template:
+    metadata:
+      labels:
+        app: fluxcd-website
+    spec:
+      containers:
+        - name: website
+          image: fluxcd:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+            
